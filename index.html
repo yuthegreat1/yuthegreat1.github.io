@@ -1,23 +1,107 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Activity 1: Basic HTML Bio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Brandon Yu</title>
 </head>
-
 <body>
-<h1>Brandon Yu</h1>
-<img src="\Users\Brandon\Pictures\monke.jpg" alt="Me!">
-  <p>Hello! My name is Brandon Yu and I'm getting my Masters at Maryville University in Data Science! Feel free to look around and learn more about me!
-    
-  </p>
-  <article>
-    <a target="_blank" href="/pandas-challenge"></a>
-    <p>pandas challenge link</p>
-  </article>
-<h2> Education</h2>
-<h2> Projects</h2>
+    <header>
+        <h1>Brandon Yu</h1>
+        <p>Data Scientist</p>
+    </header>
 
+    <section class="contact">
+        <h2>Contact Information</h2>
+        <ul>
+            <li>Email: yubrandon01@gmail.com</li>
+            <li>Phone: (314) 828-8158</li>
+            <li>Website: https://yuthegreat1.github.io/</li>
+            <li>GitHub: www.github.com/yuthegreat1</li>
+        </ul>
+    </section>
+
+    <section class="education">
+        <h2>Education</h2>
+        <div class="education-item">
+            <h3>Maryville University</h3>
+            <p>Masters of Data Science</p>
+            <p>Graduating: May 2024</p>
+        </div>
+        <div class="education-item">
+          <h3>Boston University</h3>
+          <p>Bachlors of Arts in Neuroscience and Computer Science</p>
+          <p>Graduated: May 2023</p>
+      </div>
+    </section>
+
+    <!-- <section class="experience">
+        <h2>Work Experience</h2>
+        <div class="experience-item">
+            <h3>Job Title</h3>
+            <p>Company Name</p>
+            <p>Location</p>
+            <p>Date: Month Year - Month Year</p>
+            <ul>
+                <li>Responsibility 1</li>
+                <li>Responsibility 2</li>
+                <li>Responsibility 3</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>HTML5, CSS3</li>
+            <li>JavaScript</li>
+            <li>React.js</li>
+            <li>Node.js</li>
+            <li>SQL</li>
+        </ul>
+    </section>
+
+    <section class="projects">
+        <h2>Projects</h2>
+        <div class="project-item">
+            <h3>Project Title</h3>
+            <p>Description of the project goes here.</p>
+            <p>Technologies used: HTML, CSS, JavaScript</p>
+        </div>
+    </section> -->
+
+    <footer>
+        <p>&copy; 2023 Your Name</p>
+    </footer>
 </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Tic-Tac-Toe</title>
+</head>
+<body>
+    <h1>Tic-Tac-Toe</h1>
+    <div class="game-container">
+        <div class="grid">
+            <div class="cell" id="cell-0"></div>
+            <div class="cell" id="cell-1"></div>
+            <div class="cell" id="cell-2"></div>
+            <div class="cell" id="cell-3"></div>
+            <div class="cell" id="cell-4"></div>
+            <div class="cell" id="cell-5"></div>
+            <div class="cell" id="cell-6"></div>
+            <div class="cell" id="cell-7"></div>
+            <div class="cell" id="cell-8"></div>
+        </div>
+        <div class="message" id="message">Player X's Turn</div>
+        <button id="reset-button">Reset</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
 
 </html>
