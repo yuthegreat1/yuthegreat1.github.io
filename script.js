@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let gameBoard = ['', '', '', '', '', '', '', '', ''];
     let gameOver = false;
 
+    function isBoardFull(board) {
+        return board.every(cell => cell !== '');
+    }
+    
     function checkWinner(board, player) {
         const winPatterns = [
             [0, 1, 2],
@@ -22,27 +26,15 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const pattern of winPatterns) {
             const [a, b, c] = pattern;
             if (board[a] === player && board[b] === player && board[c] === player) {
-                return true;
+                return player;
             }
+        }
+        if (isBoardFull(board)){
+        return "draw"
         }
 
         return false;
     }
-
-    function isBoardFull(board) {
-        return board.every(cell => cell !== '');
-    }
-
-    function evaluate(board) {
-        if (checkWinner(board, 'X')) {
-            return -1;
-        } else if (checkWinner(board, 'O')) {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
-
     function minimax(board, depth, isMaximizing) {
         if (checkWinner(board, 'X')) {
             return -1;
