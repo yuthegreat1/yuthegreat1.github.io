@@ -1,140 +1,140 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const cells = document.querySelectorAll('.cell');
-    const message = document.getElementById('message');
-    const resetButton = document.getElementById('reset-button');
+var origBoard;
+const huPlayer = 'O';
+const aiPlayer = 'X';
+const winCombos = [
+	[0, 1, 2],
+	[3, 4, 5],
+	[6, 7, 8],
+	[0, 3, 6],
+	[1, 4, 7],
+	[2, 5, 8],
+	[0, 4, 8],
+	[6, 4, 2]
+]
 
-    let currentPlayer = 'X';
-    let gameBoard = ['', '', '', '', '', '', '', '', ''];
-    let gameOver = false;
+const cells = document.querySelectorAll('.cell');
+startGame();
 
-    function isBoardFull(board) {
-        return board.every(cell => cell !== '');
-    }
-    
-    function checkWinner(board, player) {
-        const winPatterns = [
-            [0, 1, 2],
-            [3, 4, 5],
-            [6, 7, 8],
-            [0, 3, 6],
-            [1, 4, 7],
-            [2, 5, 8],
-            [0, 4, 8],
-            [2, 4, 6],
-        ];
+function startGame() {
+	document.querySelector(".endgame").style.display = "none";
+	origBoard = Array.from(Array(9).keys());
+	for (var i = 0; i < cells.length; i++) {
+		cells[i].innerText = '';
+		cells[i].style.removeProperty('background-color');
+		cells[i].addEventListener('click', turnClick, false);
+	}
+}
 
-        for (const pattern of winPatterns) {
-            const [a, b, c] = pattern;
-            if (board[a] === player && board[b] === player && board[c] === player) {
-                return player;
-            }
-        }
-        if (isBoardFull(board)){
-        return "draw"
-        }
+function turnClick(square) {
+	if (typeof origBoard[square.target.id] == 'number') {
+		turn(square.target.id, huPlayer)
+		if (!checkWin(origBoard, huPlayer) && !checkTie()) turn(bestSpot(), aiPlayer);
+	}
+}
 
-        return false;
-    }
-    function minimax(board, depth, isMaximizing) {
-        if (checkWinner(board, 'X')) {
-            return -1;
-        } else if (checkWinner(board, 'O')) {
-            return 1;
-        } else if (isBoardFull(board)) {
-            return 0;
-        }
+function turn(squareId, player) {
+	origBoard[squareId] = player;
+	document.getElementById(squareId).innerText = player;
+	let gameWon = checkWin(origBoard, player)
+	if (gameWon) gameOver(gameWon)
+}
 
-        if (isMaximizing) {
-            let bestScore = -Infinity;
-            for (let i = 0; i < board.length; i++) {
-                if (board[i] === '') {
-                    board[i] = 'O';
-                    const score = minimax(board, depth + 1, false);
-                    board[i] = '';
-                    bestScore = Math.max(score, bestScore);
-                }
-            }
-            return bestScore;
-        } else {
-            let bestScore = Infinity;
-            for (let i = 0; i < board.length; i++) {
-                if (board[i] === '') {
-                    board[i] = 'X';
-                    const score = minimax(board, depth + 1, true);
-                    board[i] = '';
-                    bestScore = Math.min(score, bestScore);
-                }
-            }
-            return bestScore;
-        }
-    }
+function checkWin(board, player) {
+	let plays = board.reduce((a, e, i) =>
+		(e === player) ? a.concat(i) : a, []);
+	let gameWon = null;
+	for (let [index, win] of winCombos.entries()) {
+		if (win.every(elem => plays.indexOf(elem) > -1)) {
+			gameWon = {index: index, player: player};
+			break;
+		}
+	}
+	return gameWon;
+}
 
-    function findBestMove(board) {
-        let bestMove = -1;
-        let bestScore = -Infinity;
+function gameOver(gameWon) {
+	for (let index of winCombos[gameWon.index]) {
+		document.getElementById(index).style.backgroundColor =
+			gameWon.player == huPlayer ? "blue" : "red";
+	}
+	for (var i = 0; i < cells.length; i++) {
+		cells[i].removeEventListener('click', turnClick, false);
+	}
+	declareWinner(gameWon.player == huPlayer ? "You win!" : "You lose.");
+}
 
-        for (let i = 0; i < board.length; i++) {
-            if (board[i] === '') {
-                board[i] = 'O';
-                const score = minimax(board, 0, false);
-                board[i] = '';
+function declareWinner(who) {
+	document.querySelector(".endgame").style.display = "block";
+	document.querySelector(".endgame .text").innerText = who;
+}
 
-                if (score > bestScore) {
-                    bestScore = score;
-                    bestMove = i;
-                }
-            }
-        }
+function emptySquares() {
+	return origBoard.filter(s => typeof s == 'number');
+}
 
-        return bestMove;
-    }
+function bestSpot() {
+	return minimax(origBoard, aiPlayer).index;
+}
 
-    function handleCellClick(event) {
-        const cellIndex = event.target.id.split('-')[1];
+function checkTie() {
+	if (emptySquares().length == 0) {
+		for (var i = 0; i < cells.length; i++) {
+			cells[i].style.backgroundColor = "green";
+			cells[i].removeEventListener('click', turnClick, false);
+		}
+		declareWinner("Tie Game!")
+		return true;
+	}
+	return false;
+}
 
-        if (!gameBoard[cellIndex] && !gameOver) {
-            gameBoard[cellIndex] = currentPlayer;
-            event.target.textContent = currentPlayer;
-            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-            message.textContent = `Player ${currentPlayer}'s Turn`;
+function minimax(newBoard, player) {
+	var availSpots = emptySquares();
 
-            const winner = checkWinner(gameBoard, currentPlayer);
-            if (winner) {
-                gameOver = true;
-                if (winner === 'draw') {
-                    message.textContent = 'It\'s a Draw!';
-                } else {
-                    message.textContent = `Player ${winner} wins!`;
-                }
-            } else if (currentPlayer === 'O' && !isBoardFull(gameBoard)) {
-                setTimeout(() => {
-                    const bestMove = findBestMove(gameBoard);
-                    if (bestMove !== -1) {
-                        gameBoard[bestMove] = currentPlayer;
-                        cells[bestMove].textContent = currentPlayer;
-                        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-                        message.textContent = `Player ${currentPlayer}'s Turn`;
-                    }
-                }, 500);
-            }
-        }
-    }
+	if (checkWin(newBoard, huPlayer)) {
+		return {score: -10};
+	} else if (checkWin(newBoard, aiPlayer)) {
+		return {score: 10};
+	} else if (availSpots.length === 0) {
+		return {score: 0};
+	}
+	var moves = [];
+	for (var i = 0; i < availSpots.length; i++) {
+		var move = {};
+		move.index = newBoard[availSpots[i]];
+		newBoard[availSpots[i]] = player;
 
-    function resetGame() {
-        gameBoard = ['', '', '', '', '', '', '', '', ''];
-        currentPlayer = 'X';
-        message.textContent = 'Player X\'s Turn';
-        gameOver = false;
-        cells.forEach(cell => {
-            cell.textContent = '';
-        });
-    }
+		if (player == aiPlayer) {
+			var result = minimax(newBoard, huPlayer);
+			move.score = result.score;
+		} else {
+			var result = minimax(newBoard, aiPlayer);
+			move.score = result.score;
+		}
 
-    cells.forEach(cell => {
-        cell.addEventListener('click', handleCellClick);
-    });
+		newBoard[availSpots[i]] = move.index;
 
-    resetButton.addEventListener('click', resetGame);
+		moves.push(move);
+	}
 
-    resetGame();
-});
+	var bestMove;
+	if(player === aiPlayer) {
+		var bestScore = -10000;
+		for(var i = 0; i < moves.length; i++) {
+			if (moves[i].score > bestScore) {
+				bestScore = moves[i].score;
+				bestMove = i;
+			}
+		}
+	} else {
+		var bestScore = 10000;
+		for(var i = 0; i < moves.length; i++) {
+			if (moves[i].score < bestScore) {
+				bestScore = moves[i].score;
+				bestMove = i;
+			}
+		}
+	}
+
+	return moves[bestMove];
+}

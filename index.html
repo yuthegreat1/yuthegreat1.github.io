@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="style.css">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
     <title>Brandon Yu</title>
 </head>
 <body>
@@ -31,10 +30,37 @@
         </div>
         <div class="education-item">
           <h3>Boston University</h3>
-          <p>Bachlors of Arts in Neuroscience and Computer Science</p>
+          <p>Bachelors of Arts in Neuroscience and Computer Science</p>
           <p>Graduated: May 2023</p>
       </div>
     </section>
+
+    <!-- Your other sections go here -->
+    <table>
+        <tr>
+            <td class="cell" id="0"></td>
+            <td class="cell" id="1"></td>
+            <td class="cell" id="2"></td>
+        </tr>
+        <tr>
+            <td class="cell" id="3"></td>
+            <td class="cell" id="4"></td>
+            <td class="cell" id="5"></td>
+        </tr>
+        <tr>
+            <td class="cell" id="6"></td>
+            <td class="cell" id="7"></td>
+            <td class="cell" id="8"></td>
+        </tr>
+    </table>
+    <div class="endgame">
+        <div class="text"></div>
+    </div>
+    <button onClick="startGame()">Replay</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
     <!-- <section class="experience">
         <h2>Work Experience</h2>
@@ -70,38 +96,3 @@
             <p>Technologies used: HTML, CSS, JavaScript</p>
         </div>
     </section> -->
-
-    <footer>
-        <p>&copy; 2023 Your Name</p>
-    </footer>
-</body>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Tic-Tac-Toe</title>
-</head>
-<body>
-    <h1>Tic-Tac-Toe</h1>
-    <div class="game-container">
-        <div class="grid">
-            <div class="cell" id="cell-0"></div>
-            <div class="cell" id="cell-1"></div>
-            <div class="cell" id="cell-2"></div>
-            <div class="cell" id="cell-3"></div>
-            <div class="cell" id="cell-4"></div>
-            <div class="cell" id="cell-5"></div>
-            <div class="cell" id="cell-6"></div>
-            <div class="cell" id="cell-7"></div>
-            <div class="cell" id="cell-8"></div>
-        </div>
-        <div class="message" id="message">Player X's Turn</div>
-        <button id="reset-button">Reset</button>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
-
-</html>
