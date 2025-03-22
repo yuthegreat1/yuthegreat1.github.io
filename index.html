@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="style.css">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Brandon Yu</title>
 </head>
 <body>
-    <header>
-        <h1>Brandon Yu</h1>
-        <p>Data Scientist</p>
-    </header>
+   <!-- NAVBAR -->
+    <nav> 
+        <div class="left"></div>
+        <a href="/">Brandon Yu</a>
+        <div class="right">
+            <a href="http://github.com" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/brandon--yu/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href="mailto:yubrandon01@gmail.com" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-inbox"></i>
+            </a>
+            
+            <a href="mailto:yubrandon01@gmail.com" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-hat-chef"></i>
+            </a>
+        </div>
+    </nav>
+    <!-- Intro/ me :) -->
 
     <section class="contact">
         <h2>Contact Information</h2>
@@ -20,8 +41,8 @@
             <li>GitHub: www.github.com/yuthegreat1</li>
         </ul>
     </section>
-
-    <section class="education">
+    <!-- education n stuff -->
+    <section class="education" id="education">
         <h2>Education</h2>
         <div class="education-item">
             <h3>Maryville University</h3>
@@ -35,7 +56,7 @@
       </div>
     </section>
     
-    <section class="experience">
+    <section class="experience" id="experience">
         <h2>Work Experience</h2>
         <div class="experience-item">
             <h3>Data Science Intern</h3>
@@ -75,7 +96,7 @@
             <li>SQL</li>
         </ul>
     </section>
-
+    <!-- education n stuff -->
     <section class="projects">
         <h2>Projects</h2>
         <div class="project-item">
@@ -108,6 +129,6 @@
         <button onClick="startGame()">Replay</button>
     </section>
 
-    <script src="script.js"></script>
+    <script src="tictactoe.js"></script>
 </body>
 </html>

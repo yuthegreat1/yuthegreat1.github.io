@@ -64,7 +64,7 @@ function gameOver(gameWon) {
 }
 
 function declareWinner(who) {
-	document.querySelector(".endgame").style.display = "block";
+	//document.querySelector(".endgame").style.display = "flex"; position is wonky
 	document.querySelector(".endgame .text").innerText = who;
 }
 
