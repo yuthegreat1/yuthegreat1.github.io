@@ -12,7 +12,8 @@ const winCombos = [
 	[6, 4, 2]
 ]
 
-const cells = document.querySelectorAll('.cell');
+const cells = document.querySelectorAll('.game-board .cell'); // Only game cells
+
 startGame();
 
 function startGame() {

@@ -7,15 +7,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <title>Brandon Yu</title>
 </head>
 <body>
    <!-- NAVBAR -->
     <nav> 
-        <div class="left"></div>
+        <div class="left">
         <a href="/">Brandon Yu</a>
+        </div>
         <div class="right">
-            <a href="http://github.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/yuthegreat1" target="_blank" rel="noopener noreferrer">
                 <i class="fa-brands fa-github"></i>
             </a>
             <a href="https://www.linkedin.com/in/brandon--yu/" target="_blank" rel="noopener noreferrer">
@@ -25,38 +27,86 @@
                 <i class="fa-solid fa-inbox"></i>
             </a>
             
-            <a href="mailto:yubrandon01@gmail.com" target="_blank" rel="noopener noreferrer">
-                <i class="fa-solid fa-hat-chef"></i>
+            <a href="google.com" target="_blank" rel="noopener noreferrer">  <!-- modfiy href to subpage of meals I've cooked-->
+                <i class="fa-solid fa-utensils"></i>
             </a>
         </div>
     </nav>
     <!-- Intro/ me :) -->
 
-    <section class="contact">
-        <h2>Contact Information</h2>
-        <ul>
-            <li>Email: yubrandon01@gmail.com</li>
-            <li>Phone: (314) 828-8158</li>
-            <li>Website: https://yuthegreat1.github.io/</li>
-            <li>GitHub: www.github.com/yuthegreat1</li>
-        </ul>
-    </section>
-    <!-- education n stuff -->
-    <section class="education" id="education">
-        <h2>Education</h2>
-        <div class="education-item">
-            <h3>Maryville University</h3>
-            <p>Masters of Data Science</p>
-            <p>Graduating: May 2024</p>
+    <section class="introduction">
+        <div class ="text">
+            <h2> Hi, I'm Brandon</h2>
+            <p>
+               I’m a big data nerd who loves making machines do crazy things. Professional hobby collector and enjoyer. Currently working on mycology, volunteering at an organic farm (Shout out Earthdance), working on sashiko sewing, cooking, reading and generally enjoying life or at least trying to figure out how to. 
+
+
+            </p>
+            <div class="links">
+                <!-- <a href="#education">
+                    <i class="fa-solid fa-school"></i>
+                    <span>Education</span>
+                </a> -->
+                <a href="#skills">
+                    <i class="fa-solid fa-code"></i>
+                    <span>Skills</span>
+                </a>
+                <a href="#projects">
+                    <i class="fa-solid fa-pen"></i>
+                    <span>Projects</span>
+                </a>
+                <a href="#experience">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <span>Experience</span>
+                </a>
+                <!-- <a href="#contact">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Contact</span>
+                </a> -->
+            
+            </div>
         </div>
-        <div class="education-item">
-          <h3>Boston University</h3>
-          <p>Bachelors of Arts in Neuroscience and Computer Science</p>
-          <p>Graduated: May 2023</p>
-      </div>
+        <div class ="headshot">
+            <img src = "images/me.webp" alt="brandon!">
+        </div>
+
     </section>
-    
-    <section class="experience" id="experience">
+    <!--skillz that will one day pay da billz -->
+
+    <section id="skills" class="skills-section">
+        <h2>Skills</h2>
+        <div class="text">
+            Some technologies and languages I use for stuff ranging from data analysis to machine learning and convolutional neural networks.
+        </div>
+  
+        <div class="cells">
+          <div class="cell">
+            <img src="images/python-logo.webp" alt="python logo">
+            <span>Python</span>
+          </div>
+          
+          <div class="cell">
+            <img src="images/html-logo.webp" alt="css logo">
+            <span>HTML</span>
+          </div>
+          
+          <div class="cell">
+            <img src="images/r-logo.webp" alt="r logo">
+            <span>R</span>
+          </div>
+          
+          <div class="cell">
+            <img src="images/sql-logo.webp" alt="sql logo">
+            <span>SQL</span>
+          </div>
+          
+          <div class="cell">
+            <img src="images/tensorflow-logo.webp" alt="tensorflow logo">
+            <span>TensorFlow</span>
+          </div>
+        </div>
+      </section>
+    <section class="experience">
         <h2>Work Experience</h2>
         <div class="experience-item">
             <h3>Data Science Intern</h3>
@@ -86,25 +136,16 @@
         </div>
     </section>
 
-    <section class="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>HTML5, CSS3</li>
-            <li>JavaScript</li>
-            <li>React.js</li>
-            <li>Node.js</li>
-            <li>SQL</li>
-        </ul>
-    </section>
-    <!-- education n stuff -->
-    <section class="projects">
+    <!-- projects n stuff -->
+    <section id="projects">
         <h2>Projects</h2>
         <div class="project-item">
-            <h3>Project Title</h3>
-            <p>Description of the project goes here.</p>
+            <h3>Optimized TicTacToe</h3>
+            <p>A small setup of tictactoe which optimizes the correct play based on the minimax algorithm. Implemented in javascript and hopefully ties or wins.</p>
             <p>Technologies used: HTML, CSS, JavaScript</p>
-        
-            <table>
+            
+            <section class="game-board">  
+                <table>
                 <tr>
                     <td class="cell" id="0"></td>
                     <td class="cell" id="1"></td>
@@ -121,12 +162,15 @@
                     <td class="cell" id="8"></td>
                 </tr>
             </table>
+            <text> </text>
+            <button onClick="startGame()">Replay</button>
+            </section>
         </div>
 
         <div class="endgame">
             <div class="text"></div>
         </div>
-        <button onClick="startGame()">Replay</button>
+        
     </section>
 
     <script src="tictactoe.js"></script>
