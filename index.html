@@ -11,8 +11,7 @@
     <title>Brandon Yu</title>
 </head>
 <body>
-   <!-- NAVBAR -->
-    <nav> 
+   <nav>
         <div class="left">
         <a href="/">Brandon Yu</a>
         </div>
@@ -26,27 +25,20 @@
             <a href="mailto:yubrandon01@gmail.com" target="_blank" rel="noopener noreferrer">
                 <i class="fa-solid fa-inbox"></i>
             </a>
-            
-            <a href="https://findtheinvisiblecow.com/" target="_blank" rel="noopener noreferrer">  <!-- modfiy href to subpage of meals I've cooked-->
-                <i class="fa-solid fa-cow"></i>
+
+            <a href="https://findtheinvisiblecow.com/" target="_blank" rel="noopener noreferrer">  <i class="fa-solid fa-cow"></i>
             </a>
         </div>
     </nav>
-    <!-- Intro/ me :) -->
-
     <section class="introduction">
         <div class ="text">
             <h2> Hi, I'm Brandon</h2>
             <p>
-               I’m a big data nerd who loves making machines do crazy things. Professional hobby collector and enjoyer. Currently working on mycology, volunteering at an organic farm (Shout out Earthdance), working on sashiko sewing, cooking, reading and generally enjoying life or at least trying to figure out how to. 
+               I’m a big data nerd who loves making machines do crazy things. Professional hobby collector and enjoyer. Currently working on mycology, volunteering at an organic farm (Shout out Earthdance), working on sashiko sewing, cooking, reading and generally enjoying life or at least trying to figure out how to.
 
 
             </p>
             <div class="links">
-                <!-- <a href="#education">
-                    <i class="fa-solid fa-school"></i>
-                    <span>Education</span>
-                </a> -->
                 <a href="#skills">
                     <i class="fa-solid fa-code"></i>
                     <span>Skills</span>
@@ -59,55 +51,48 @@
                     <i class="fa-solid fa-pen"></i>
                     <span>Projects</span>
                 </a>
-              
-                <!-- <a href="#contact">
-                    <i class="fa-solid fa-envelope"></i>
-                    <span>Contact</span>
-                </a> -->
-            
-            </div>
+
+                </div>
         </div>
         <div class ="headshot">
             <img src = "images/me.webp" alt="brandon!">
         </div>
 
     </section>
-    <!--skillz that will one day pay da billz -->
-
     <section id="skills" class="skills-section">
         <h2>Skills</h2>
         <div class="text">
             Some technologies and languages I use for stuff ranging from data analysis to machine learning and convolutional neural networks.
         </div>
-  
+
         <div class="cells">
           <div class="cell">
             <img src="images/python-logo.webp" alt="python logo">
             <span>Python</span>
           </div>
-          
+
           <div class="cell">
             <img src="images/html-logo.webp" alt="css logo">
             <span>HTML</span>
           </div>
-          
+
           <div class="cell">
             <img src="images/r-logo.webp" alt="r logo">
             <span>R</span>
           </div>
-          
+
           <div class="cell">
             <img src="images/sql-logo.webp" alt="sql logo">
             <span>SQL</span>
           </div>
-          
+
           <div class="cell">
             <img src="images/tensorflow-logo.webp" alt="tensorflow logo">
             <span>TensorFlow</span>
           </div>
         </div>
       </section>
-    <section class="experience">
+  <section id="experience" class="experience">
         <h2>Work Experience</h2>
         <div class="experience-item">
             <h3>Data Science Intern</h3>
@@ -160,43 +145,41 @@
 
     </section>
 
-    <!-- projects n stuff -->
     <section id="projects">
         <h2>Projects</h2>
-        <div class="project-item">
-            <h3>Optimized TicTacToe</h3>
-            <p>A small setup of tictactoe which optimizes the correct play based on the minimax algorithm. Implemented in javascript and hopefully ties or wins.</p>
-            <p>Technologies used: HTML, CSS, JavaScript</p>
-            
-            <section class="game-board">  
-                <table>
-                <tr>
-                    <td class="cell" id="0"></td>
-                    <td class="cell" id="1"></td>
-                    <td class="cell" id="2"></td>
-                </tr>
-                <tr>
-                    <td class="cell" id="3"></td>
-                    <td class="cell" id="4"></td>
-                    <td class="cell" id="5"></td>
-                </tr>
-                <tr>
-                    <td class="cell" id="6"></td>
-                    <td class="cell" id="7"></td>
-                    <td class="cell" id="8"></td>
-                </tr>
-            </table>
-            <text> </text>
-            <button onClick="startGame()">Replay</button>
-            </section>
-        </div>
-
-        <div class="endgame">
-            <div class="text"></div>
-        </div>
-        
+        <div id="projects-container">
+            </div>
     </section>
 
-    <script src="tictactoe.js"></script>
+    <script src="tictactoe.js"></script> <script src="projects.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const projectsContainer = document.getElementById('projects-container');
+
+            projects.forEach(project => {
+                const projectItem = document.createElement('div');
+                projectItem.classList.add('project-item');
+                projectItem.id = project.id; // Assign the unique ID
+
+                const technologiesHtml = project.technologies.map(tech => `<span>${tech}</span>`).join('');
+
+                projectItem.innerHTML = `
+                    <h3>${project.title}</h3>
+                    <p>${project.description}</p>
+                    <p>Technologies used: ${technologiesHtml}</p>
+                    ${project.htmlContent}
+                `;
+                projectsContainer.appendChild(projectItem);
+
+                // Initialize specific project scripts after adding to DOM
+                if (project.id === "tictactoe-project") {
+                    // Call the initialization function from tictactoe.js
+                    if (typeof initializeTicTacToeGame === 'function') {
+                        initializeTicTacToeGame();
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
